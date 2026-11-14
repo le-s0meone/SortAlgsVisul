@@ -1,0 +1,13 @@
+#include <iostream>
+#include <SDL2/SDL.h>
+int main(){
+  SDL_Window *window = nullptr; 
+  SDL_Renderer *renderer = nullptr; 
+  SDL_Init(SDL_INIT_VIDEO);
+  SDL_CreateWindowAndRenderer(640, 480, &window, &renderer);
+
+  SDL_RenderClear(renderer);
+  SDL_RenderPresent(renderer);
+  SDL_Delay(3000);
+	return 0;
+}
