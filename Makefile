@@ -1,2 +1,2 @@
 all:
-		g++ main.cpp -o main -lSDL2 SAV.cpp
+		g++ main.cpp -Wall -Wextra -o main -lSDL2 SAV.cpp
