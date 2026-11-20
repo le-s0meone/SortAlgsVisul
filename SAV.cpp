@@ -41,6 +41,16 @@ void InsertionSort(unsigned int x, unsigned int y, SDL_Renderer *renderer, std::
     }
   }
 }
+void SelectionSort(unsigned int x, unsigned int y, SDL_Renderer *renderer, std::vector<int> &arr){
+  for(unsigned int a = 0; a < arr.size(); a++){
+    unsigned int mina = a;
+    for(unsigned int b = a; b < arr.size(); b++){
+      EverythingThatsGoodFromTheWorld(a, mina, x, y, renderer, arr);
+      if(arr[mina] > arr[b]) mina = b;
+    }
+    swap(arr[a], arr[mina]);
+  }
+}
 void Mergeration(unsigned int begenn, unsigned int middie, unsigned int enned, unsigned int x, unsigned int y, SDL_Renderer *renderer, std::vector<int> &arr){
   unsigned int ll = 1 + middie - begenn;
   unsigned int sizie = enned - begenn + 1;
@@ -99,4 +109,91 @@ void MergeSortSigmaMafiaBossFromMuhammad(unsigned int begenn, unsigned int enned
 }
 void MergeSort(unsigned int x, unsigned int y, SDL_Renderer *renderer, std::vector<int> &arr){
   MergeSortSigmaMafiaBossFromMuhammad(0, arr.size() - 1, x, y, renderer, arr);
+}
+void BubbleSort(unsigned int x, unsigned int y, SDL_Renderer *renderer, std::vector<int> &arr){
+  EverythingThatsGoodFromTheWorld(0, 0, x, y, renderer, arr);
+  for(size_t i = arr.size() - 1; i > 0; i--){
+    for(size_t j = 0; j <= i; j++){
+      if(arr[j] > arr[j + 1]){
+        swap(arr[j], arr[j + 1]);
+        EverythingThatsGoodFromTheWorld(i, j, x, y, renderer, arr);
+      }
+    }
+  } 
+}
+unsigned int TripleT_ElectricBoogaloo2(unsigned int ma, int rong, unsigned int x, unsigned int y, SDL_Renderer *renderer, std::vector<int> &arr){
+  int pivvy = rong;
+  unsigned int i = ma;
+  unsigned int j = rong;
+  while(arr[i] != arr[j]){
+    EverythingThatsGoodFromTheWorld(i, j, x, y, renderer, arr);
+    if(arr[i] < arr[pivvy]) i++;
+    else{
+      j--;
+      swap(arr[i], arr[j]);
+    }
+  }
+  swap(arr[i], arr[pivvy]);
+  return i;
+}
+void QuickSortPatrickBatemanThomasShelbySigmaMales(int tungtung, int sahur, unsigned int x, unsigned int y, SDL_Renderer *renderer, std::vector<int> &arr){
+  EverythingThatsGoodFromTheWorld(0, 0, x, y, renderer, arr);
+  if(tungtung >= sahur || sahur < 0) return; 
+  unsigned int qawa = TripleT_ElectricBoogaloo2(tungtung, sahur, x, y, renderer, arr);
+  QuickSortPatrickBatemanThomasShelbySigmaMales(tungtung, qawa - 1, x, y, renderer, arr);
+  QuickSortPatrickBatemanThomasShelbySigmaMales(qawa + 1, sahur, x, y, renderer, arr);
+}
+void QuickSort(unsigned int x, unsigned int y, SDL_Renderer *renderer, std::vector<int> &arr){
+  QuickSortPatrickBatemanThomasShelbySigmaMales(0, arr.size() - 1, x, y, renderer, arr);
+}
+int highEx(int x){
+  int i = 0;
+  while(x >= 4){
+    x = x >> 2;
+    i++;
+  }
+  return i;
+}
+void RadixSort(unsigned int x, unsigned int y, SDL_Renderer *renderer, std::vector<int> &arr){
+  size_t mamal = arr.size();
+  std::vector<int> ba;
+  unsigned int itn = 0;
+  for(size_t a = 0; a < arr.size(); a++){
+    if(arr[itn] < arr[a]) itn = a;
+  }
+  int s = highEx(arr[itn]);
+  EverythingThatsGoodFromTheWorld(0, 0, x, y, renderer, arr);
+  for(int d = 0; d <= s; d++){
+    std::vector<int> zeroes;
+    std::vector<int> ones;
+    std::vector<int> twos;
+    std::vector<int> threes;
+    for(size_t n = 0; n < mamal; n++){
+      switch ((arr[n] >> (2 * d)) % 4) {
+        case 0:
+          zeroes.push_back(arr[n]);
+          break;
+        case 1:
+          ones.push_back(arr[n]);
+          break;
+        case 2:
+          twos.push_back(arr[n]);
+          break;
+        case 3:
+          threes.push_back(arr[n]);
+          break;
+        default:
+          break;
+      }
+    }
+    for(auto &wq : zeroes) ba.push_back(wq);
+    for(auto &wq : ones) ba.push_back(wq);
+    for(auto &wq : twos) ba.push_back(wq);
+    for(auto &wq : threes) ba.push_back(wq);
+    for(size_t am = 0; am < mamal; am++){
+      arr[am] = ba[am];
+      EverythingThatsGoodFromTheWorld(0, 0, x, y, renderer, arr);
+    }
+    ba.clear();
+  }
 }
